@@ -9,8 +9,14 @@
   - View: CreateAccountPage
     - Components: [hero image, create account card]
       - CreateAccountCard: [create account form, create account button, loader]
-  - View: UserHomePage
+  - View: HomePage
     - Components: [tbd]
 
 ## Tech Used
-  React, Redux, Lottie, D3, Reach Router
+  React, Redux, Lottie, D3, Reach Router, Redux Thunk
+
+## To install:
+  - clone the repo to your local machine
+  - navigate inside the folder you cloned
+  - run ```npm install``` inside the terminal to install dependencies (must be inside the project folder)
+  - run ```npm start``` to run it locally! 

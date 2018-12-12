@@ -1,7 +1,7 @@
 import {
   EMAIL_CHANGED,
-  PASSWORD_CHANGED,
-  USERNAME_CHANGED
+  USERNAME_CHANGED,
+  PASSWORD_CHANGED
 } from '../actions/types'
 
 const INITIAL_STATE = {

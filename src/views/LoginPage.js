@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 import { usernameChanged, passwordChanged } from '../actions'
 import { Link } from '@reach/router'
 
-const LoginPage = ({ username, password }) => {
+const LoginPage = (props) => {
   return (
     <div>
       <form>
         <label>Username</label>
-        <input type='text' onChange={(e) => usernameChanged(e.target.value)} value={username} />
+        <input required type='text' onChange={(e) => props.usernameChanged(e.target.value)} value={props.username} />
         <label>Password</label>
-        <input type='text' onChange={(e) => passwordChanged(e.target.value)} value={password} />
+        <input required minlength='6'type='password' onChange={(e) => props.passwordChanged(e.target.value)} value={props.password} />
       </form>
       <Link to='/login'>Login</Link>
       <Link to='/create'>Create Account</Link>
@@ -20,9 +20,9 @@ const LoginPage = ({ username, password }) => {
 }
 
 const mapStateToProps = state => {
-  const { email, password } = state.auth
+  const { username, password } = state.auth
 
-  return { email, password }
+  return { username, password }
 }
 
 export default connect(mapStateToProps, { usernameChanged, passwordChanged })(LoginPage)

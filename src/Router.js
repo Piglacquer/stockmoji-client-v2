@@ -7,7 +7,7 @@ import CreateAccountPage from './views/CreateAccountPage'
 const StockmojiRouter = () => {
   return (
     <Router>
-      <LandingPage path='/' />
+      <LandingPage path='/' exact />
       <LoginPage path='/login' />
       <CreateAccountPage path='/create' />
     </Router>

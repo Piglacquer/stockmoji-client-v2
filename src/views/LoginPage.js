@@ -10,7 +10,7 @@ const LoginPage = (props) => {
         <label>Username</label>
         <input required type='text' onChange={(e) => props.usernameChanged(e.target.value)} value={props.username} />
         <label>Password</label>
-        <input required minlength='6'type='password' onChange={(e) => props.passwordChanged(e.target.value)} value={props.password} />
+        <input required minLength='6'type='password' onChange={(e) => props.passwordChanged(e.target.value)} value={props.password} />
       </form>
       <Link to='/login'>Login</Link>
       <Link to='/create'>Create Account</Link>

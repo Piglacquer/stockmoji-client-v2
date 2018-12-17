@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 import reducers from './reducers'
 import StockmojiRouter from './Router.js'
-import './App.css'
+import './styles/css/App.css'
 
 class App extends Component {
   render () {

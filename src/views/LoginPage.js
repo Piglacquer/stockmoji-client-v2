@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { usernameChanged, passwordChanged } from '../actions'
+import { usernameChanged, passwordChanged, loginUser } from '../actions'
 import { Link } from '@reach/router'
 
 const LoginPage = (props) => {
@@ -12,6 +12,9 @@ const LoginPage = (props) => {
         <label>Password</label>
         <input required minLength='6'type='password' onChange={(e) => props.passwordChanged(e.target.value)} value={props.password} />
       </form>
+      <button onClick={() => {
+        props.loginUser({ username: props.username, password: props.password })
+      }}>Submit</button>
       <Link to='/login'>Login</Link>
       <Link to='/create'>Create Account</Link>
       <Link to='/'>Home</Link>
@@ -25,4 +28,4 @@ const mapStateToProps = state => {
   return { username, password }
 }
 
-export default connect(mapStateToProps, { usernameChanged, passwordChanged })(LoginPage)
+export default connect(mapStateToProps, { usernameChanged, passwordChanged, loginUser })(LoginPage)

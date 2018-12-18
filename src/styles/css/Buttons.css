@@ -1,8 +1,13 @@
-.confirm_button {
-  border-radius: 5px;
-  background-color: green;
-  height: 15vh;
-  width: 20vw;
+.confirm-button {
+  line-height: 2em;
+  box-shadow: -3px 3px 2px #90c173;
+  border: none;
+  border-radius: 16px;
+  background-color: #e6f1df;
+}
+
+.confirm-button:active {
+  box-shadow: -1px 1px 2px #90c173;
 }
 
 /*# sourceMappingURL=Buttons.css.map */

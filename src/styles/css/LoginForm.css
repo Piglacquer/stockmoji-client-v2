@@ -1,0 +1,25 @@
+.loginForm {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 33vw;
+  height: 33vh;
+  border: 10px solid grey;
+}
+.loginForm form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.loginForm form .form-field {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+/*# sourceMappingURL=LoginForm.css.map */

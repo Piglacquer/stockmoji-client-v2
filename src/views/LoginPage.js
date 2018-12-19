@@ -19,7 +19,7 @@ const LoginPage = (props) => {
           <div className='hero' />
           <div className='login-container'>
             <LoginForm className='login-form' />
-            <p>{`${props.error}`}</p>
+            <hr />
             <div className='create-account-prompt'>
               <p>Don't have an account?</p>
               <Link to='/create'>Create Account</Link>

@@ -20,7 +20,7 @@ const LoginForm = (props) => {
       <button className='confirm-button' onClick={() => {
         props.loginUser({ username: props.username, password: props.password })
       }}>Login</button>
-      <p>{`${props.error}`}</p>
+      <p className='login-error'>{`${props.error}`}</p>
     </div>
   )
 }

@@ -1,0 +1,21 @@
+#nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100vw;
+  height: 7vh;
+
+  .link {
+    height: 100%;
+    text-decoration: none;
+    
+    #nav-button {
+      height: 100%;
+      color: white;
+
+      .nav-emoji {
+        font-size: 2rem;
+      }
+    }
+  }
+}

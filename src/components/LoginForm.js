@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Card } from '@material-ui/core'
 import '../styles/css/LoginForm.css'
 import '../styles/css/Buttons.css'
 import { connect } from 'react-redux'
@@ -6,7 +7,7 @@ import { usernameChanged, passwordChanged, loginUser } from '../actions'
 
 const LoginForm = (props) => {
   return (
-    <div className='login-form-container'>
+    <Card className='login-form-container'>
       <form>
         <div className='form-field'>
           <label htmlFor='username'>Username</label>
@@ -17,11 +18,11 @@ const LoginForm = (props) => {
           <input required name='password' minLength='6'type='password' onChange={(e) => props.passwordChanged(e.target.value)} value={props.password} />
         </div>
       </form>
-      <button className='confirm-button' onClick={() => {
+      <Button variant='contained' color='primary' onClick={() => {
         props.loginUser({ username: props.username, password: props.password })
-      }}>Login</button>
+      }}>Login</Button>
       <p className='login-error'>{`${props.error}`}</p>
-    </div>
+    </Card>
   )
 }
 

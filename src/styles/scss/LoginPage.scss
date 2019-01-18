@@ -42,10 +42,10 @@ $break-large: 1200px;
   .login-container {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 50vw;
-    height: 50vh;
+    height: 100vh;
 
     @media screen and (max-width: $break-small) {
       width: 100vw;

@@ -1,18 +1,16 @@
 import React from 'react'
-import { Link } from '@reach/router'
 import Animation from '../components/Animation'
 import '../styles/css/LandingPage.css'
 import '../styles/css/Buttons.css'
 
 const LandingPage = () => {
   return (
-    <div className='LandingPage'>
+    <div className='landing-page'>
       <Animation
         width={window.innerWidth * 0.9}
-        height={window.innerWidth * 0.45}
+        height={window.innerWidth * 0.3}
         loop={false} />
-      <Link className='confirm_button' to='/login'>Login</Link>
-      <Link to='/create'>Create Account</Link>
+      <h2 className='tagline'>...a stocksentiment analyzer <span role='img' aria-label='shrugging emoji'>🤷‍♂️</span></h2>
     </div>
   )
 }

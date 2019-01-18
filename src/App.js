@@ -4,6 +4,9 @@ import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 import reducers from './reducers'
 import StockmojiRouter from './Router.js'
+import NavBar from './components/NavBar'
+import { MuiThemeProvider } from '@material-ui/core/styles'
+import theme from './theme'
 import './styles/css/App.css'
 
 class App extends Component {
@@ -12,7 +15,10 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <StockmojiRouter />
+        <MuiThemeProvider theme={theme}>
+          <NavBar />
+          <StockmojiRouter />
+        </MuiThemeProvider>
       </Provider>
     )
   }

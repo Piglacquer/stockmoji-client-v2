@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { emailChanged, usernameChanged, passwordChanged } from '../actions'
 import { Link } from '@reach/router'
+import '../styles/css/CreateAccountPage.css'
 
 const CreateAccountPage = (props) => {
   return (
-    <div>
+    <div id='create-account-page'>
       <form>
         <label>Username</label>
         <input type='text' onChange={(e) => props.usernameChanged(e.target.value)} value={props.username} />

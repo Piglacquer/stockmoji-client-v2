@@ -65,7 +65,8 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  width: 15vw;
+  align-items: center;
+  width: 20vw;
 }
 
 /*# sourceMappingURL=LoginPage.css.map */

@@ -1,7 +1,60 @@
-#create-account-page {
+$break-small: 320px;
+$break-large: 1200px;
+
+.create-account-page-container {
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+  flex-flow: row nowrap;
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  justify-content: space-between;
+
+  @media screen and (max-width: $break-small) {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100vw;
+  }
+
+  @media screen and (max-width: $break-large) {
+    display: flex;
+    flex-flow: column nowrap;
+
+  }
+
+  .hero {
+    width: 50vw;
+    background-image: url('https://images.unsplash.com/photo-1521579772986-45a33628a34e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80');
+    background-size: cover;
+    overflow: hidden;
+  
+
+    @media screen and (max-width: $break-small) {
+      width: 100vw;
+      height: 50vh;
+    }
+
+    @media screen and (max-width: $break-large) {
+      width: 100vw;
+      height: 50vh;
+    }
+  }
+
+  .create-account-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+
+    @media screen and (max-width: $break-small) {
+      width: 100vw;
+      height: 50vh;
+    }
+
+    @media screen and (max-width: $break-large) {
+      width: 100vw;
+      height: 50vh;
+    }
+  }
 }

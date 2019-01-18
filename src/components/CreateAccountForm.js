@@ -1,18 +1,27 @@
 import React from 'react'
 import { Button, Card, TextField } from '@material-ui/core'
-import '../styles/css/LoginForm.css'
+import '../styles/css/CreateAccountForm.css'
 import '../styles/css/Buttons.css'
 import { connect } from 'react-redux'
-import { usernameChanged, passwordChanged, loginUser } from '../actions'
+import { usernameChanged, passwordChanged, emailChanged, registerUser } from '../actions'
 
-const LoginForm = (props) => {
+const CreateAccountForm = (props) => {
   return (
-    <Card className='login-form-container'>
-      <form className='loginForm'>
+    <Card className='register-form-container'>
+      <form className='registerForm'>
         <TextField
           required
           id='outlined-required'
           label='Email'
+          margin='normal'
+          variant='outlined'
+          onChange={(e) => props.emailChanged(e.target.value)}
+          value={props.username}
+        />
+        <TextField
+          required
+          id='outlined-required'
+          label='Username'
           margin='normal'
           variant='outlined'
           onChange={(e) => props.usernameChanged(e.target.value)}
@@ -29,7 +38,7 @@ const LoginForm = (props) => {
         />
       </form>
       <Button variant='contained' color='primary' onClick={() => {
-        props.loginUser({ username: props.username, password: props.password })
+        props.registerUser({ email: props.email, username: props.username, password: props.password })
       }}>Login</Button>
       { props.error ? <p className='login-error'>{`${props.error}`}</p> : null }
     </Card>
@@ -37,8 +46,8 @@ const LoginForm = (props) => {
 }
 
 const mapStateToProps = state => {
-  const { username, password, error } = state.auth
-  return { username, password, error }
+  const { email, username, password } = state.auth
+  return { email, username, password }
 }
 
-export default connect(mapStateToProps, { usernameChanged, passwordChanged, loginUser })(LoginForm)
+export default connect(mapStateToProps, { emailChanged, usernameChanged, passwordChanged, registerUser })(CreateAccountForm)

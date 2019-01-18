@@ -1,30 +1,33 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { emailChanged, usernameChanged, passwordChanged } from '../actions'
-import { Link } from '@reach/router'
+import CreateAccountForm from '../components/CreateAccountForm'
+import Animation from '../components/Animation'
 import '../styles/css/CreateAccountPage.css'
 
 const CreateAccountPage = (props) => {
   return (
-    <div id='create-account-page'>
-      <form>
-        <label>Username</label>
-        <input type='text' onChange={(e) => props.usernameChanged(e.target.value)} value={props.username} />
-        <label>Email</label>
-        <input type='email' onChange={(e) => props.emailChanged(e.target.value)} value={props.email} />
-        <label>Password</label>
-        <input type='password' onChange={(e) => props.passwordChanged(e.target.value)} value={props.password} />
-      </form>
-      <Link to='/create'>Create Account</Link>
-      <Link to='/login'>Login Page</Link>
-      <Link to='/'>Home</Link>
+    <div>
+      { props.loading
+        ? <Animation
+          width={window.innerWidth * 0.45}
+          height={window.innerWidth * 0.45}
+          loop={false}
+          loading
+        />
+        : <div className='create-account-page-container'>
+          <div className='create-account-container'>
+            <CreateAccountForm />
+          </div>
+          <div className='hero' />
+        </div>
+      }
     </div>
   )
 }
 
 const mapStateToProps = state => {
   const { email, username, password } = state.auth
-
   return { email, username, password }
 }
 

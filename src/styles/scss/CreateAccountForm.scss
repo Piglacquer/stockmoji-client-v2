@@ -1,10 +1,11 @@
-.login-form-container {
+.register-form-container {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
   min-width: 200px;
+  height: 27vh;
 
-  .loginForm {
+  .registerForm {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;

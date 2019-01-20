@@ -20,3 +20,8 @@
   - navigate inside the folder you cloned
   - run ```npm install``` inside the terminal to install dependencies (must be inside the project folder)
   - run ```npm start``` to run it locally! 
+
+## Other repositories in this project: 
+- [Stockmoji Front-end V1](https://github.com/Piglacquer/stockmoji-client)
+- [Stockmoji API Server](https://github.com/Piglacquer/stockmoji-server-apis)
+- [Stockmoji DB](https://github.com/Piglacquer/stockmoji-db)

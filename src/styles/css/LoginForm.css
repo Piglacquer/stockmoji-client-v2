@@ -2,7 +2,9 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-items: center;
   min-width: 200px;
+  height: auto;
 }
 .login-form-container .loginForm {
   display: flex;
@@ -12,6 +14,15 @@
   width: 20vw;
   min-width: 200px;
   height: 20vh;
+}
+.login-form-container .affirmative-button {
+  width: 100%;
+}
+.login-form-container .login-error {
+  color: red;
+  font-size: 1em;
+  width: 50%;
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=LoginForm.css.map */

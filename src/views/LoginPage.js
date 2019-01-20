@@ -10,12 +10,14 @@ const LoginPage = (props) => {
   return (
     <div>
       { props.loading
-        ? <Animation
-          width={window.innerWidth * 0.45}
-          height={window.innerWidth * 0.45}
-          loop={false}
-          loading
-        />
+        ? <div className='animation-container'>
+          <Animation
+            width={window.innerWidth * 0.45}
+            height={window.innerWidth * 0.45}
+            loop={false}
+            loading
+          />
+        </div>
         : <div className='login-page-container'>
           <div className='hero' />
           <div className='login-container'>
@@ -23,7 +25,7 @@ const LoginPage = (props) => {
             <hr />
             <div className='create-account-prompt'>
               <p>Don't have an account?</p>
-              <Button variant='contained' color='primary'><Link to='/create'>Create Account</Link></Button>
+              <Button variant='contained' color='primary'><Link to='/create' className='link'>Create Account</Link></Button>
             </div>
           </div>
         </div>

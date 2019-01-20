@@ -11,7 +11,6 @@ const CreateAccountForm = (props) => {
       <form className='registerForm'>
         <TextField
           required
-          id='outlined-required'
           label='Email'
           margin='normal'
           variant='outlined'
@@ -20,7 +19,6 @@ const CreateAccountForm = (props) => {
         />
         <TextField
           required
-          id='outlined-required'
           label='Username'
           margin='normal'
           variant='outlined'
@@ -29,8 +27,8 @@ const CreateAccountForm = (props) => {
         />
         <TextField
           required
-          id='outlined-required'
           label='Password'
+          type='password'
           margin='normal'
           variant='outlined'
           onChange={(e) => props.passwordChanged(e.target.value)}

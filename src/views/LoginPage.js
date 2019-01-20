@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from '@reach/router'
-import { Button } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 import Animation from '../components/Animation'
 import LoginForm from '../components/LoginForm'
 import '../styles/css/LoginPage.css'
@@ -24,7 +24,7 @@ const LoginPage = (props) => {
             <LoginForm className='login-form' />
             <hr />
             <div className='create-account-prompt'>
-              <p>Don't have an account?</p>
+              <Typography className='create-account-prompt-text'>Don't have an account?</Typography>
               <Button variant='contained' color='primary'><Link to='/create' className='link'>Create Account</Link></Button>
             </div>
           </div>

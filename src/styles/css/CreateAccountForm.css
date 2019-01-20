@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-items: center;
   min-width: 200px;
   height: 27vh;
 }
@@ -13,6 +14,16 @@
   width: 20vw;
   min-width: 200px;
   height: 20vh;
+}
+.register-form-container .login-error {
+  color: red;
+  font-size: 1em;
+  width: 90%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.register-form-container .affirmative-button {
+  width: 100%;
 }
 
 /*# sourceMappingURL=CreateAccountForm.css.map */

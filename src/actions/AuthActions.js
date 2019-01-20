@@ -67,18 +67,31 @@ export const loginUserFail = (dispatch, error) => {
   })
 }
 
-export const registerUser = (dispatch, user) => {
-  dispatch({
-    type: REGISTER_USER,
-    payload: user
-  })
+export const registerUser = ({ username, password, email }) => {
+  return dispatch => {
+    dispatch({ type: REGISTER_USER })
+    return fetch('http://localhost:3000/auth/register',
+      {
+        method: 'POST',
+        body: JSON.stringify({ username, password, email }),
+        credentials: 'include',
+        headers: new Headers({ 'Content-Type': 'application/json' })
+      })
+      .then(resp => {
+        return resp.ok ? resp.json() : Promise.reject(new Error('username or password incorrect'))
+      })
+      .then(user => {
+        return setTimeout(() => registerUserSuccess(dispatch), 2000)
+      })
+      .catch(error => setTimeout(() => registerUserFail(dispatch, error), 2000))
+  }
 }
 
-export const registerUserSuccess = (dispatch, user) => {
+export const registerUserSuccess = (dispatch) => {
   dispatch({
-    type: REGISTER_USER_SUCCESS,
-    payload: user
+    type: REGISTER_USER_SUCCESS
   })
+  navigate('/login')
 }
 
 export const registerUserFail = (dispatch, error) => {

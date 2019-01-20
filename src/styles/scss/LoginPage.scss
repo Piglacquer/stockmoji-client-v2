@@ -77,6 +77,10 @@ $break-large: 1200px;
       align-items: center;
       width: 20vw;
 
+      .create-account-prompt-text {
+        color: white;
+      }
+
       .link {
         height: 100%;
         text-decoration: none;

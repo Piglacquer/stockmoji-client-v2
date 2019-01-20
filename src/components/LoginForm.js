@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, TextField } from '@material-ui/core'
+import { Button, Card, TextField, Typography } from '@material-ui/core'
 import { connect } from 'react-redux'
 import { usernameChanged, passwordChanged, loginUser } from '../actions'
 import '../styles/css/LoginForm.css'
@@ -29,7 +29,7 @@ const LoginForm = (props) => {
           value={props.password}
         />
       </form>
-      { props.error ? <p className='login-error'>{`${props.error}`}</p> : null }
+      { props.error ? <Typography className='login-error'>{`${props.error}`}</Typography> : null }
       <Button className='affirmative-button' variant='contained' color='primary' onClick={() => {
         props.loginUser({ username: props.username, password: props.password })
       }}>Login</Button>

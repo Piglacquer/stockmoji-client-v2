@@ -15,15 +15,16 @@
     min-width: 200px;
     height: 20vh;
   }
-
-  .affirmative-button {
-    width: 100%;
-  }
-
+  
   .login-error {
     color:red;
     font-size: 1em;
-    width: 50%;
+    width: 90%;
     margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .affirmative-button {
+    width: 100%;
   }
 }

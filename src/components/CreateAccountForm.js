@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, TextField } from '@material-ui/core'
+import { Button, Card, TextField, Typography } from '@material-ui/core'
 import '../styles/css/CreateAccountForm.css'
 import '../styles/css/Buttons.css'
 import { connect } from 'react-redux'
@@ -12,10 +12,11 @@ const CreateAccountForm = (props) => {
         <TextField
           required
           label='Email'
+          type='email'
           margin='normal'
           variant='outlined'
           onChange={(e) => props.emailChanged(e.target.value)}
-          value={props.username}
+          value={props.email}
         />
         <TextField
           required
@@ -35,17 +36,17 @@ const CreateAccountForm = (props) => {
           value={props.password}
         />
       </form>
-      <Button variant='contained' color='primary' onClick={() => {
+      { props.error ? <Typography className='login-error'>{`${props.error}`}</Typography> : null }
+      <Button className='affirmative-button' variant='contained' color='primary' onClick={() => {
         props.registerUser({ email: props.email, username: props.username, password: props.password })
-      }}>Login</Button>
-      { props.error ? <p className='login-error'>{`${props.error}`}</p> : null }
+      }}>Register</Button>
     </Card>
   )
 }
 
 const mapStateToProps = state => {
-  const { email, username, password } = state.auth
-  return { email, username, password }
+  const { email, username, password, error } = state.auth
+  return { email, username, password, error }
 }
 
 export default connect(mapStateToProps, { emailChanged, usernameChanged, passwordChanged, registerUser })(CreateAccountForm)

@@ -17,7 +17,8 @@ const INITIAL_STATE = {
   user: null,
   loginError: '',
   registerError: '',
-  loading: false
+  loading: false,
+  loggedIn: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -35,7 +36,8 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         ...INITIAL_STATE,
         user: action.payload,
-        loading: false
+        loading: false,
+        loggedIn: true
       }
     case LOGIN_USER_FAIL:
       return {

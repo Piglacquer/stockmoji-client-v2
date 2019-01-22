@@ -15,7 +15,8 @@ const INITIAL_STATE = {
   username: '',
   password: '',
   user: null,
-  error: '',
+  loginError: '',
+  registerError: '',
   loading: false
 }
 
@@ -39,7 +40,7 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER_FAIL:
       return {
         ...state,
-        error: action.payload,
+        loginError: action.payload,
         password: '',
         loading: false
       }
@@ -48,7 +49,7 @@ export default (state = INITIAL_STATE, action) => {
     case REGISTER_USER_SUCCESS:
       return { ...state, loading: false, email: '', password: '' }
     case REGISTER_USER_FAIL:
-      return { ...state, loading: false, error: action.payload, password: '' }
+      return { ...state, loading: false, registerError: action.payload, password: '' }
     default:
       return state
   }

@@ -53,6 +53,7 @@ export const loginUser = ({ username, password }) => {
 }
 
 export const loginUserSuccess = (dispatch, user) => {
+  console.log(user)
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user
@@ -78,7 +79,7 @@ export const registerUser = ({ username, password, email }) => {
         headers: new Headers({ 'Content-Type': 'application/json' })
       })
       .then(resp => {
-        return resp.ok ? resp.json() : Promise.reject(new Error('username or password incorrect'))
+        return resp.ok ? resp.json() : Promise.reject(new Error('Something happened, try again!'))
       })
       .then(user => {
         return setTimeout(() => registerUserSuccess(dispatch), 2000)

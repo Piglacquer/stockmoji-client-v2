@@ -29,7 +29,7 @@ const LoginForm = (props) => {
           value={props.password}
         />
       </form>
-      { props.error ? <Typography className='login-error'>{`${props.error}`}</Typography> : null }
+      { props.loginError ? <Typography className='login-error'>{`${props.loginError}`}</Typography> : null }
       <Button className='affirmative-button' variant='contained' color='primary' onClick={() => {
         props.loginUser({ username: props.username, password: props.password })
       }}>Login</Button>
@@ -38,8 +38,8 @@ const LoginForm = (props) => {
 }
 
 const mapStateToProps = state => {
-  const { username, password, error } = state.auth
-  return { username, password, error }
+  const { username, password, loginError } = state.auth
+  return { username, password, loginError }
 }
 
 export default connect(mapStateToProps, { usernameChanged, passwordChanged, loginUser })(LoginForm)

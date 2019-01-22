@@ -36,7 +36,7 @@ const CreateAccountForm = (props) => {
           value={props.password}
         />
       </form>
-      { props.error ? <Typography className='login-error'>{`${props.error}`}</Typography> : null }
+      { props.registerError ? <Typography className='login-error'>{`${props.registerError}`}</Typography> : null }
       <Button className='affirmative-button' variant='contained' color='primary' onClick={() => {
         props.registerUser({ email: props.email, username: props.username, password: props.password })
       }}>Register</Button>
@@ -45,8 +45,8 @@ const CreateAccountForm = (props) => {
 }
 
 const mapStateToProps = state => {
-  const { email, username, password, error } = state.auth
-  return { email, username, password, error }
+  const { email, username, password, registerError } = state.auth
+  return { email, username, password, registerError }
 }
 
 export default connect(mapStateToProps, { emailChanged, usernameChanged, passwordChanged, registerUser })(CreateAccountForm)

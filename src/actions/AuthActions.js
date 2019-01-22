@@ -7,7 +7,8 @@ import {
   LOGIN_USER_FAIL,
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAIL
+  REGISTER_USER_FAIL,
+  LOGOUT_USER
 } from './types'
 import { navigate } from '@reach/router'
 
@@ -99,4 +100,15 @@ export const registerUserFail = (dispatch, error) => {
     type: REGISTER_USER_FAIL,
     payload: error
   })
+}
+
+export const logoutUser = () => {
+  return dispatch => {
+    dispatch({ type: LOGOUT_USER })
+    return fetch('http://localhost:3000/auth/logout', {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then(() => navigate('/'))
+  }
 }

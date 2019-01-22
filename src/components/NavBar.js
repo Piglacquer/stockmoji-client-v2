@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { logoutUser } from '../actions'
 import { Link } from '@reach/router'
 import { Button, AppBar, Toolbar } from '@material-ui/core'
 import '../styles/css/NavBar.css'
@@ -40,9 +41,7 @@ const LoggedInNav = (props) => {
           </Button>
         </Link>
         <Toolbar>
-          <Link className='link' to='/login'>
-            <Button variant='outlined' color='primary' id='nav-button'>Logout</Button>
-          </Link>
+          <Button variant='outlined' color='primary' id='nav-button' onClick={props.props.logoutUser}>Logout</Button>
         </Toolbar>
       </AppBar>
     </>
@@ -54,4 +53,4 @@ const mapStateToProps = state => {
   return { loggedIn, user }
 }
 
-export default connect(mapStateToProps, null)(NavBar)
+export default connect(mapStateToProps, { logoutUser })(NavBar)

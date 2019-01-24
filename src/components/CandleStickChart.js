@@ -1,14 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { scaleTime } from 'd3-scale'
 import { utcDay } from 'd3-time'
-
 import { ChartCanvas, Chart } from 'react-stockcharts'
 import { CandlestickSeries } from 'react-stockcharts/lib/series'
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes'
-import { fitWidth } from 'react-stockcharts/lib/helper'
 import { last, timeIntervalBarWidth } from 'react-stockcharts/lib/utils'
+import '../styles/css/CandleStickChart.css'
 
 class CandleStickChart extends React.Component {
   constructor (props) {
@@ -21,8 +19,19 @@ class CandleStickChart extends React.Component {
       xAccessor(last(this.props.stockInfo.chart)),
       xAccessor(this.props.stockInfo.chart[this.props.stockInfo.chart.length - 100])
     ]
+    const height = window.innerHeight * 0.4
+    const candlesAppearance = {
+      wickStroke: '#efb734',
+      fill: function fill (d) {
+        return d.close > d.open ? 'rgba(47, 153, 135, 1)' : 'rgba(168, 50, 50, 1)'
+      },
+      stroke: '#000000',
+      candleStrokeWidth: 0,
+      widthRatio: 0.8,
+      opacity: 1
+    }
     return (
-      <ChartCanvas height={400}
+      <ChartCanvas height={height}
         ratio={1.5}
         width={window.innerWidth * 0.9}
         margin={{ left: 50, right: 50, top: 10, bottom: 30 }}
@@ -31,26 +40,17 @@ class CandleStickChart extends React.Component {
         data={this.props.stockInfo.chart}
         xAccessor={xAccessor}
         xScale={scaleTime()}
-        xExtents={xExtents}>
+        xExtents={xExtents}
+        clamp>
         <Chart id={1} yExtents={d => [d.high, d.low]}>
-          <XAxis axisAt='bottom' orient='bottom' ticks={6} />
-          <YAxis axisAt='left' orient='left' ticks={5} />
-          <CandlestickSeries width={timeIntervalBarWidth(utcDay)} />
+          <XAxis axisAt='bottom' orient='bottom' ticks={6} stroke='rgba(239, 183, 52, 0.6)' />
+          <YAxis axisAt='left' orient='left' ticks={5} stroke='rgba(239, 183, 52, 0.6)' />
+          <CandlestickSeries width={timeIntervalBarWidth(utcDay)} {...candlesAppearance} />
         </Chart>
       </ChartCanvas>
     )
   }
 }
-
-CandleStickChart.propTypes = {
-  type: PropTypes.oneOf(['svg', 'hybrid']).isRequired
-}
-
-CandleStickChart.defaultProps = {
-  type: 'svg'
-}
-
-CandleStickChart = fitWidth(CandleStickChart)
 
 const mapStateToProps = state => {
   const { stockInfo } = state.stocks

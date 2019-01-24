@@ -31,17 +31,24 @@ const LoggedOutNav = () => {
   )
 }
 
-const LoggedInNav = (props) => {
+const LoggedInNav = ({ props }) => {
+  console.log(props)
   return (
     <>
       <AppBar color='primary' position='fixed' id='nav'>
-        <Link className='link' to={`/home/${props.props.user.userId}`}>
+        <Link className='link' to={`/home/${props.user.userId}`}>
           <Button variant='outlined' color='primary' id='nav-button'>
             <span role='img' aria-label='money face emoji' className='nav-emoji'>🤑</span>
           </Button>
         </Link>
         <Toolbar>
-          <Button variant='outlined' color='primary' id='nav-button' onClick={props.props.logoutUser}>Logout</Button>
+          <Link className='link' to={`/user-stocks/${props.user.userId}`}>
+            <Button variant='outlined' color='primary' id='nav-button'>Stocks</Button>
+          </Link>
+          <Link className='link' to={`/home/${props.user.userId}`}>
+            <Button variant='outlined' color='primary' id='nav-button'>Analyze</Button>
+          </Link>
+          <Button variant='outlined' color='primary' id='nav-button' onClick={props.logoutUser}>Logout</Button>
         </Toolbar>
       </AppBar>
     </>

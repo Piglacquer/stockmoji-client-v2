@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import TickerInput from '../components/TickerInput'
-import StocksList from '../components/StocksList'
+// import StocksList from '../components/StocksList'
 import CandleStickChart from '../components/CandleStickChart'
 import StockInfo from '../components/StockInfo'
 import '../styles/css/HomePage.css'

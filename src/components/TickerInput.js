@@ -1,19 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { handleTickerChange } from '../actions'
-import { TextField } from '@material-ui/core'
+import { handleTickerChange, getNewStock } from '../actions'
+import { TextField, Card, Button } from '@material-ui/core'
 
 const TickerInput = (props) => {
   return (
-    <TextField
-      required
-      label='Ticker'
-      type='text'
-      margin='normal'
-      variant='outlined'
-      onChange={(e) => props.handleTickerChange(e.target.value)}
-      value={props.ticker}
-    />
+    <Card>
+      <TextField
+        required
+        label='Ticker'
+        type='text'
+        margin='normal'
+        variant='outlined'
+        onChange={(e) => props.handleTickerChange(e.target.value)}
+        value={props.ticker}
+      />
+      <Button variant='outlined' color='primary' onClick={() => props.getNewStock(props.ticker)}>GO</Button>
+    </Card>
   )
 }
 
@@ -22,4 +25,4 @@ const mapStateToProps = state => {
   return { ticker }
 }
 
-export default connect(mapStateToProps, { handleTickerChange })(TickerInput)
+export default connect(mapStateToProps, { handleTickerChange, getNewStock })(TickerInput)

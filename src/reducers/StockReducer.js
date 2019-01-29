@@ -3,8 +3,10 @@ import {
   GET_USER_STOCKS_SUCCESS,
   GET_USER_STOCKS_FAIL,
   TICKER_CHANGED,
-  GET_NEW_STOCK,
-  GET_NEW_STOCK_SUCCESS
+  GET_NEW_STOCK_INFO,
+  GET_NEW_STOCK_INFO_SUCCESS,
+  GET_NEW_STOCK_SENTIMENT,
+  GET_NEW_STOCK_SENTIMENT_SUCCESS
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -12,7 +14,9 @@ const INITIAL_STATE = {
   ticker: '',
   stockInfo: null,
   loading: false,
-  error: ''
+  error: '',
+  sentimentScore: '',
+  magnitudeScore: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,10 +29,14 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: false, error: action.payload }
     case TICKER_CHANGED:
       return { ...state, ticker: action.payload }
-    case GET_NEW_STOCK:
+    case GET_NEW_STOCK_INFO:
       return { ...state, loading: true }
-    case GET_NEW_STOCK_SUCCESS:
+    case GET_NEW_STOCK_INFO_SUCCESS:
       return { ...state, loading: false, stockInfo: action.payload }
+    case GET_NEW_STOCK_SENTIMENT:
+      return { ...state, loading: true }
+    case GET_NEW_STOCK_SENTIMENT_SUCCESS:
+      return { ...state, loading: false, sentimentScore: action.payload.score, magnitudeScore: action.payload.magnitude }
     default:
       return state
   }

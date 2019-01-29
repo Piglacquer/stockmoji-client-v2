@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { scaleTime } from 'd3-scale'
 import { utcDay } from 'd3-time'
 import { format } from 'd3-format'
 import { ChartCanvas, Chart } from 'react-stockcharts'
 import { CandlestickSeries, BarSeries } from 'react-stockcharts/lib/series'
+import { EdgeIndicator } from 'react-stockcharts/lib/coordinates'
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes'
 import { last, timeIntervalBarWidth } from 'react-stockcharts/lib/utils'
 import '../styles/css/CandleStickChart.css'
 
-class CandleStickChart extends React.Component {
+class CandleStickChart extends Component {
   constructor (props) {
     super(props)
     this.state = {}
@@ -33,7 +34,7 @@ class CandleStickChart extends React.Component {
     }
     return (
       <ChartCanvas height={height}
-        ratio={1.5}
+        ratio={0.5}
         width={window.innerWidth * 0.5}
         margin={{ left: 50, right: 50, top: 10, bottom: 30 }}
         type='svg'
@@ -55,6 +56,13 @@ class CandleStickChart extends React.Component {
             ticks={5}
             stroke='rgba(239, 183, 52, 0.6)' />
           <CandlestickSeries width={timeIntervalBarWidth(utcDay)} {...candlesAppearance} />
+          <EdgeIndicator
+            itemType='last'
+            orient='right'
+            edgeAt='right'
+            yAccessor={d => d.close}
+            fill={d => (d.close > d.open ? '#6BA583' : '#FF0000')}
+          />
         </Chart>
         <Chart
           id={2}

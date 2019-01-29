@@ -1,7 +1,33 @@
 .sentiment-card {
-  width: 95vw;
+  width: 40vw;
+  height: auto;
   background-color: white;
   border-radius: 5px;
+}
+.sentiment-card .header {
+  background-color: #009688;
+  border-radius: 5px 5px 0 0;
+  padding: 0 0 0 15px;
+  font-size: 2em;
+}
+.sentiment-card .scores-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sentiment-card .scores-container .score-wrapper {
+  display: flex;
+  height: auto;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.sentiment-card .scores-container .score-wrapper .emoji {
+  font-size: 10em;
+  padding: 15px 0 0 0;
 }
 
 /*# sourceMappingURL=SentimentCard.css.map */

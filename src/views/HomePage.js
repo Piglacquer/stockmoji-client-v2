@@ -10,11 +10,11 @@ const HomePage = (props) => {
   return (
     <div id='home-page'>
       <TickerInput />
-      { props.stockInfo
+      { props.stockInfo && props.magnitudeScore
         ? <div className='response-container'>
-          <SentimentCard />
+          <CandleStickChart />
           <div className='info-chart-container'>
-            <CandleStickChart />
+            <SentimentCard />
             <StockInfo />
           </div>
         </div>
@@ -24,8 +24,8 @@ const HomePage = (props) => {
 }
 
 const mapStateToProps = state => {
-  const { stockInfo } = state.stocks
-  return { stockInfo }
+  const { stockInfo, magnitudeScore } = state.stocks
+  return { stockInfo, magnitudeScore }
 }
 
 export default connect(mapStateToProps, null)(HomePage)

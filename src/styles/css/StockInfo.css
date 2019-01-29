@@ -3,7 +3,6 @@
   display: flex;
   flex-flow: column nowrap;
   width: 40vw;
-  padding: 15px;
   border-radius: 5px;
 }
 .stock-info-card .stock-info-header {
@@ -12,7 +11,6 @@
   align-items: center;
   justify-content: space-between;
   background-color: #009688;
-  margin: -15px -15px 0 -15px;
   border-radius: 5px 5px 0 0;
   padding: 0 15px 0 15px;
 }
@@ -29,7 +27,7 @@
   color: white;
 }
 .stock-info-card .stock-info-body {
-  padding: 15px 0 0 0;
+  padding: 15px;
 }
 .stock-info-card .stock-info-body .description {
   padding: 10px 0 0 0;

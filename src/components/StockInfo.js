@@ -1,12 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, CardHeader } from '@material-ui/core'
+import { Card, CardHeader, CardContent, Typography } from '@material-ui/core'
 
 const StockInfo = (props) => {
   return (
     <Card>
-      <CardHeader className='card-header' title={props.stockInfo.company.symbol}
-        subheader='September 14, 2016' />
+      <CardHeader className='card-header' title={props.stockInfo.company.symbol} subheader={props.stockInfo.company.industry} />
+      <CardContent>
+        <Typography component='p'>
+          {props.stockInfo.company.description}
+        </Typography>
+      </CardContent>
     </Card>
   )
 }

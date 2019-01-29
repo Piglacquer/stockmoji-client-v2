@@ -5,4 +5,20 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
+
+  .response-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .info-chart-container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 95%;
+    }
+  }
 }

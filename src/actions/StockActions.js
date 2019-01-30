@@ -4,6 +4,7 @@ import {
   GET_USER_STOCKS_SUCCESS,
   GET_NEW_STOCK_INFO,
   GET_NEW_STOCK_INFO_SUCCESS,
+  GET_NEW_STOCK_INFO_FAIL,
   GET_NEW_STOCK_SENTIMENT,
   GET_NEW_STOCK_SENTIMENT_SUCCESS
 } from './types'
@@ -65,6 +66,10 @@ export const getNewStockInfo = (ticker) => {
       .then(stockInfo => dispatch({
         type: GET_NEW_STOCK_INFO_SUCCESS,
         payload: stockInfo
+      }))
+      .catch(error => dispatch({
+        type: GET_NEW_STOCK_INFO_FAIL,
+        payload: error
       }))
   }
 }

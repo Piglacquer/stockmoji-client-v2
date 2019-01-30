@@ -21,7 +21,7 @@ class CandleStickChart extends Component {
       xAccessor(last(this.props.stockInfo.chart)),
       xAccessor(this.props.stockInfo.chart[this.props.stockInfo.chart.length - 100])
     ]
-    const height = window.innerHeight * 0.4
+    const height = window.innerHeight * 0.6
     const candlesAppearance = {
       wickStroke: '#efb734',
       fill: function fill (d) {

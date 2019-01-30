@@ -5,11 +5,8 @@
   justify-content: center;
   padding: 15px;
 }
-.ticker-input TextField {
-  margin: none;
-}
-.ticker-input TextField .MuiFormControl-marginNormal-72 {
-  margin: none;
+.ticker-input .input-field {
+  margin: 0;
 }
 .ticker-input Button {
   padding: 14px 14px;

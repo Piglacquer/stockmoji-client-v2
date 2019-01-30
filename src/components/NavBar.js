@@ -19,6 +19,9 @@ const LoggedOutNav = () => {
           </Button>
         </Link>
         <Toolbar>
+          <Link className='link' to='/about'>
+            <Button variant='outlined' color='primary' id='nav-button'>About</Button>
+          </Link>
           <Link className='link' to='/login'>
             <Button variant='outlined' color='primary' id='nav-button'>Login</Button>
           </Link>
@@ -42,6 +45,9 @@ const LoggedInNav = ({ props }) => {
           </Button>
         </Link>
         <Toolbar>
+          <Link className='link' to='/about'>
+            <Button variant='outlined' color='primary' id='nav-button'>About</Button>
+          </Link>
           <Link className='link' to={`/user-stocks/${props.user.userId}`}>
             <Button variant='outlined' color='primary' id='nav-button'>Stocks</Button>
           </Link>

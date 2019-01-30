@@ -5,15 +5,12 @@
   justify-content: center;
   padding: 15px;
 
-  TextField {
-    margin: none;
-
-    .MuiFormControl-marginNormal-72 {
-      margin: none;
-    }
+  .input-field {
+    margin: 0;
   }
 
   Button {
     padding: 14px 14px;
   }
 }
+

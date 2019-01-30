@@ -13,6 +13,7 @@ const TickerInput = (props) => {
         type='text'
         margin='normal'
         variant='outlined'
+        className='input-field'
         onChange={(e) => props.handleTickerChange(e.target.value)}
         value={props.ticker}
       />

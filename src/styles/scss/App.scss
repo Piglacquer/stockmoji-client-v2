@@ -50,8 +50,11 @@ table {
 
 // User styling
 body {
+  display: flex;
+  align-items: space-between;
+  justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   background-color: #222;
   color: white;
 }

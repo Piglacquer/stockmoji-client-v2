@@ -1,0 +1,27 @@
+#about-page {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90vw;
+  height: 100vh;
+
+  .about-block-emoji {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .about-emoji {
+      padding: 30px 0 0 0;
+      font-size: 9em;
+      height: auto;
+    }
+
+    .about-text {
+      color: white;
+      font-size: 2em;
+    }
+  }
+}

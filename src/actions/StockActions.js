@@ -36,7 +36,7 @@ const errorFactory = (message, data) => {
 }
 
 const isError = (response) => {
-  response.status === 200 ? response.json() : Promise.reject(errorFactory('Wake up sleepyhead', { status: response.status }))
+  return response.ok ? response.json() : Promise.reject(errorFactory('Wake up sleepyhead', { status: response.status }))
 }
 
 /// ACTIONS

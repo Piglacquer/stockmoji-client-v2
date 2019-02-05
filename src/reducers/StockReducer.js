@@ -7,7 +7,8 @@ import {
   GET_NEW_STOCK_INFO_SUCCESS,
   GET_NEW_STOCK_INFO_FAIL,
   GET_NEW_STOCK_SENTIMENT,
-  GET_NEW_STOCK_SENTIMENT_SUCCESS
+  GET_NEW_STOCK_SENTIMENT_SUCCESS,
+  GET_NEW_STOCK_SENTIMENT_FAIL
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -39,6 +40,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state }
     case GET_NEW_STOCK_SENTIMENT_SUCCESS:
       return { ...state, sentimentScore: action.payload.score, magnitudeScore: action.payload.magnitude }
+    case GET_NEW_STOCK_SENTIMENT_FAIL:
+      return { ...state, ticker: '', error: 'Try again! My server was asleep!' }
     default:
       return state
   }

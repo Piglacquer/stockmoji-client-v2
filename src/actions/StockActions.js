@@ -9,6 +9,7 @@ import {
   GET_NEW_STOCK_SENTIMENT_SUCCESS
 } from './types'
 
+/// HELPERS
 const prepareTweetData = twitterResp => {
   let tweetBodies = twitterResp.tweets.statuses.map(story => {
     return story.text
@@ -19,6 +20,26 @@ const prepareTweetData = twitterResp => {
   }
 }
 
+const getSentiment = (data) => {
+  return fetch('https://stockpickeremoji.herokuapp.com/', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: new Headers({
+      'content-type': 'application/json'
+    })
+  })
+}
+
+const errorFactory = (message, data) => {
+  const err = new Error(message)
+  return Object.assign(err, data)
+}
+
+const isError = (response) => {
+  response.status === 200 ? response.json() : Promise.reject(errorFactory('Wake up sleepyhead', { status: response.status }))
+}
+
+/// ACTIONS
 export const getUserStocks = (userId) => {
   return dispatch => {
     dispatch({ type: GET_USER_STOCKS })
@@ -38,23 +59,19 @@ export const getNewStockSentiment = (ticker) => {
   return dispatch => {
     dispatch({ type: GET_NEW_STOCK_SENTIMENT })
     return fetch(`https://stockpickeremoji.herokuapp.com/${ticker}`)
-      .then(resp => resp.json())
-      .then(tweets => prepareTweetData(tweets))
-      .then(normalizedTweets => {
-        return fetch('https://stockpickeremoji.herokuapp.com/', {
-          method: 'POST',
-          body: JSON.stringify(normalizedTweets),
-          headers: new Headers({
-            'content-type': 'application/json'
-          })
-        })
-      })
-      .then(resp => resp.json())
+      .then(isError)
+      .then(prepareTweetData)
+      .then(getSentiment)
+      .then(isError)
       .then(sentiment => dispatch({
         type: GET_NEW_STOCK_SENTIMENT_SUCCESS,
         payload: sentiment
       })
       )
+      .catch(err => {
+        console.log(err)
+        return getNewStockSentiment(ticker)
+      })
   }
 }
 

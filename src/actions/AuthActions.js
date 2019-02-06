@@ -8,7 +8,8 @@ import {
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAIL,
-  LOGOUT_USER
+  LOGOUT_USER,
+  IS_LOGGED_IN
 } from './types'
 import { navigate } from '@reach/router'
 
@@ -110,5 +111,16 @@ export const logoutUser = () => {
       credentials: 'include'
     })
       .then(() => navigate('/'))
+  }
+}
+
+export const isLoggedIn = () => {
+  return dispatch => {
+    return fetch('http://localhost:3000/auth/loginCheck', {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then(resp => resp.json())
+      .then(resp => resp.loggedIn ? dispatch({ type: IS_LOGGED_IN }) : navigate('/'))
   }
 }

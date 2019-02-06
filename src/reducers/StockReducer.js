@@ -37,7 +37,7 @@ export default (state = INITIAL_STATE, action) => {
     case GET_NEW_STOCK_INFO_FAIL:
       return { ...state, error: 'Choose a real stock!' }
     case GET_NEW_STOCK_SENTIMENT:
-      return { ...state }
+      return { ...state, sentimentScore: '', magnitudeScore: '' }
     case GET_NEW_STOCK_SENTIMENT_SUCCESS:
       return { ...state, sentimentScore: action.payload.score, magnitudeScore: action.payload.magnitude }
     case GET_NEW_STOCK_SENTIMENT_FAIL:

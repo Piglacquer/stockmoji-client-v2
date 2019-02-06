@@ -36,7 +36,14 @@ const errorFactory = (message, data) => {
 }
 
 const isError = (response) => {
-  return response.ok ? response.json() : Promise.reject(errorFactory('Wake up sleepyhead', { status: response.status }))
+  return response.status === 200 ? response.json() : Promise.reject(errorFactory('Wake up sleepyhead', { status: response.status }))
+}
+
+const promiseTimeout = (msec) => {
+  return promise => {
+    const timeout = new Promise((resolve, reject) => setTimeout(() => reject(new Error('Timeout expired')), msec))
+    return Promise.race([promise, timeout])
+  }
 }
 
 /// ACTIONS
@@ -57,8 +64,9 @@ export const getUserStocks = (userId) => {
 
 export const getNewStockSentiment = (ticker) => {
   return dispatch => {
+    console.log('hit me')
     dispatch({ type: GET_NEW_STOCK_SENTIMENT })
-    return fetch(`https://stockpickeremoji.herokuapp.com/${ticker}`)
+    return promiseTimeout(6500)(fetch(`https://stockpickeremoji.herokuapp.com/${ticker}`))
       .then(isError)
       .then(prepareTweetData)
       .then(getSentiment)
@@ -69,7 +77,7 @@ export const getNewStockSentiment = (ticker) => {
       })
       )
       .catch(err => {
-        console.log(err)
+        console.error(err)
         return getNewStockSentiment(ticker)
       })
   }

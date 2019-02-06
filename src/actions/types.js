@@ -9,6 +9,7 @@ export const REGISTER_USER = 'register_user'
 export const REGISTER_USER_SUCCESS = 'register_user_success'
 export const REGISTER_USER_FAIL = 'register_user_fail'
 export const LOGOUT_USER = 'logout_user'
+export const IS_LOGGED_IN = 'is_logged_in'
 
 // Stock actions
 export const TICKER_CHANGED = 'ticker_changed'

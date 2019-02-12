@@ -5,7 +5,6 @@ import StocksList from '../components/StocksList'
 const UserStocksPage = () => {
   return (
     <>
-      <h1>user stocks page</h1>
       <StocksList />
     </>
   )

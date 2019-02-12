@@ -6,7 +6,7 @@ import { Button, AppBar, Toolbar } from '@material-ui/core'
 import '../styles/css/NavBar.css'
 
 const NavBar = (props) => {
-  return props.loggedIn ? <LoggedInNav props={props} /> : <LoggedOutNav />
+  return props.userId ? <LoggedInNav props={props} /> : <LoggedOutNav />
 }
 
 const LoggedOutNav = () => {
@@ -39,7 +39,7 @@ const LoggedInNav = ({ props }) => {
   return (
     <>
       <AppBar color='primary' position='fixed' id='nav'>
-        <Link className='link' to={`/home/${props.user.userId}`}>
+        <Link className='link' to={`/home/${props.userId}`}>
           <Button variant='outlined' color='primary' id='nav-button'>
             <span role='img' aria-label='money face emoji' className='nav-emoji'>🤑</span>
           </Button>
@@ -48,10 +48,10 @@ const LoggedInNav = ({ props }) => {
           <Link className='link' to='/about'>
             <Button variant='outlined' color='primary' id='nav-button'>About</Button>
           </Link>
-          <Link className='link' to={`/user-stocks/${props.user.userId}`}>
+          <Link className='link' to={`/user-stocks/${props.userId}`}>
             <Button variant='outlined' color='primary' id='nav-button'>Stocks</Button>
           </Link>
-          <Link className='link' to={`/home/${props.user.userId}`}>
+          <Link className='link' to={`/home/${props.userId}`}>
             <Button variant='outlined' color='primary' id='nav-button'>Analyze</Button>
           </Link>
           <Button variant='outlined' color='primary' id='nav-button' onClick={props.logoutUser}>Logout</Button>
@@ -62,8 +62,8 @@ const LoggedInNav = ({ props }) => {
 }
 
 const mapStateToProps = state => {
-  const { loggedIn, user } = state.auth
-  return { loggedIn, user }
+  const { userId } = state.auth
+  return { userId }
 }
 
 export default connect(mapStateToProps, { logoutUser })(NavBar)

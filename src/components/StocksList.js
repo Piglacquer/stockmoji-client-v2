@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getUserStocks } from '../actions'
+import { getUserStocks, isLoggedIn } from '../actions'
+import UserStockCard from '../components/UserStockCard'
 
 class StocksList extends Component {
   constructor (props) {
@@ -8,21 +9,30 @@ class StocksList extends Component {
     this.state = {}
   }
 
+  createStockCards (stocks) {
+    return stocks.map(stock => {
+      return (
+        <UserStockCard stock={stock} key={`${stock.id}`} />
+      )
+    })
+  }
+
   componentDidMount () {
-    this.props.getUserStocks(this.props.user.userId)
+    this.props.isLoggedIn()
+      .then(() => this.props.getUserStocks(this.props.userId))
   }
 
   render () {
     return (
-      <h1>StocksList</h1>
+      this.props.userStocks.length > 0 ? this.props.userStocks.map(stock => <UserStockCard stock={stock} />) : null
     )
   }
 }
 
 const mapStateToProps = state => {
   const { userStocks } = state.stocks
-  const { user } = state.auth
-  return { userStocks, user }
+  const { user, userId } = state.auth
+  return { userStocks, user, userId }
 }
 
-export default connect(mapStateToProps, { getUserStocks })(StocksList)
+export default connect(mapStateToProps, { getUserStocks, isLoggedIn })(StocksList)

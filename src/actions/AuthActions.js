@@ -121,6 +121,9 @@ export const isLoggedIn = () => {
       credentials: 'include'
     })
       .then(resp => resp.json())
-      .then(resp => resp.loggedIn ? dispatch({ type: IS_LOGGED_IN }) : navigate('/'))
+      .then(resp => resp.userId ? dispatch({
+        type: IS_LOGGED_IN,
+        payload: resp
+      }) : navigate('/login'))
   }
 }

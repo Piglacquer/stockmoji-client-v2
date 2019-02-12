@@ -6,7 +6,8 @@ import {
   GET_NEW_STOCK_INFO_SUCCESS,
   GET_NEW_STOCK_INFO_FAIL,
   GET_NEW_STOCK_SENTIMENT,
-  GET_NEW_STOCK_SENTIMENT_SUCCESS
+  GET_NEW_STOCK_SENTIMENT_SUCCESS,
+  ADD_USER_STOCK_SUCCESS
 } from './types'
 
 /// HELPERS
@@ -64,7 +65,6 @@ export const getUserStocks = (userId) => {
 
 export const getNewStockSentiment = (ticker) => {
   return dispatch => {
-    console.log('hit me')
     dispatch({ type: GET_NEW_STOCK_SENTIMENT })
     return promiseTimeout(6500)(fetch(`https://stockpickeremoji.herokuapp.com/${ticker}`))
       .then(isError)
@@ -78,7 +78,7 @@ export const getNewStockSentiment = (ticker) => {
       )
       .catch(err => {
         console.error(err)
-        return getNewStockSentiment(ticker)
+        return getNewStockSentiment(ticker)(dispatch)
       })
   }
 }
@@ -105,4 +105,23 @@ export const handleTickerChange = (ticker) => {
     type: TICKER_CHANGED,
     payload: normalizedTicker
   })
+}
+
+export const addNewStock = (stock) => {
+  return dispatch => {
+    fetch('http://localhost:3000/stocks', {
+      method: 'POST',
+      headers: new Headers({
+        'content-type': 'application/json'
+      }),
+      body: JSON.stringify(stock)
+    })
+      .then(resp => resp.json())
+      .then(stock => {
+        dispatch({
+          type: ADD_USER_STOCK_SUCCESS,
+          payload: stock
+        })
+      })
+  }
 }

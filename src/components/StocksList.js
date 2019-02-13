@@ -12,7 +12,7 @@ class StocksList extends Component {
   createStockCards (stocks) {
     return stocks.map(stock => {
       return (
-        <UserStockCard stock={stock} key={`${stock.id}`} />
+        <UserStockCard stock={stock} key={`stock ${stock.stock_ticker + stock.id}`} />
       )
     })
   }

@@ -1,13 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import StocksList from '../components/StocksList'
 
 const UserStocksPage = () => {
   return (
-    <>
+    <div className='user-stocks-page'>
       <StocksList />
-    </>
+    </div>
   )
 }
 
-export default connect(null, null)(UserStocksPage)
+export default UserStocksPage

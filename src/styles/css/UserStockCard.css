@@ -1,6 +1,22 @@
 .user-stock-card {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
   width: 80vw;
   background-color: white;
+  margin: 10px 0 10px 0;
+}
+.user-stock-card .ticker-symbol {
+  font-size: 2em;
+}
+.user-stock-card .sentiment-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.user-stock-card .sentiment-wrapper .score-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 /*# sourceMappingURL=UserStockCard.css.map */

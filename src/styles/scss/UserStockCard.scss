@@ -1,4 +1,23 @@
 .user-stock-card {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
   width: 80vw;
   background-color: white;
+  margin: 10px 0 10px 0;
+
+  .ticker-symbol {
+    font-size: 2em;
+  }
+
+  .sentiment-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+
+    .score-wrapper {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+  }
 }

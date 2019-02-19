@@ -5,7 +5,7 @@ import SentimentCard from '../components/SentimentCard'
 import CandleStickChart from '../components/CandleStickChart'
 import StockInfo from '../components/StockInfo'
 import { Button } from '@material-ui/core'
-import { isLoggedIn, addNewStock } from '../actions'
+import { isLoggedIn, addNewStock, resetStockInfo } from '../actions'
 import '../styles/css/HomePage.css'
 
 class HomePage extends Component {
@@ -15,11 +15,14 @@ class HomePage extends Component {
   }
 
   componentDidMount () {
-    this.props.isLoggedIn()
+    return this.props.isLoggedIn()
+  }
+
+  componentWillUnmount () {
+    return this.props.resetStockInfo()
   }
 
   render () {
-    console.log(this.props)
     return (
       <div id='home-page'>
         <TickerInput />
@@ -29,7 +32,7 @@ class HomePage extends Component {
             <div className='info-chart-container'>
               <SentimentCard />
               <StockInfo />
-              <Button variant='outlined' color='primary' onClick={() => this.props.addNewStock({
+              <Button variant='contained' color='primary' onClick={() => this.props.addNewStock({
                 user_id: this.props.id,
                 stock_ticker: this.props.stockInfo.company.symbol,
                 sentiment: this.props.sentimentScore,
@@ -51,4 +54,4 @@ const mapStateToProps = state => {
   return { stockInfo, magnitudeScore, sentimentScore, isLoggedIn, user }
 }
 
-export default connect(mapStateToProps, { isLoggedIn, addNewStock })(HomePage)
+export default connect(mapStateToProps, { isLoggedIn, addNewStock, resetStockInfo })(HomePage)

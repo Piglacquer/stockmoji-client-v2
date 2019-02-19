@@ -6,6 +6,7 @@ import { Button, AppBar, Toolbar } from '@material-ui/core'
 import '../styles/css/NavBar.css'
 
 const NavBar = (props) => {
+  console.log(props)
   return props.userId ? <LoggedInNav props={props} /> : <LoggedOutNav />
 }
 

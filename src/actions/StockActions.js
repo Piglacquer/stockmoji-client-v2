@@ -7,7 +7,8 @@ import {
   GET_NEW_STOCK_INFO_FAIL,
   GET_NEW_STOCK_SENTIMENT,
   GET_NEW_STOCK_SENTIMENT_SUCCESS,
-  ADD_USER_STOCK_SUCCESS
+  ADD_USER_STOCK_SUCCESS,
+  RESET_STOCK_INFO
 } from './types'
 
 /// HELPERS
@@ -51,7 +52,7 @@ const promiseTimeout = (msec) => {
 export const getUserStocks = (userId) => {
   return dispatch => {
     dispatch({ type: GET_USER_STOCKS })
-    return fetch(`http://localhost:3000/stocks/${userId}`, {
+    return fetch(`https://stockmoji-server-db.herokuapp.com/stocks/${userId}`, {
       method: 'GET',
       credentials: 'include'
     })
@@ -108,9 +109,8 @@ export const handleTickerChange = (ticker) => {
 }
 
 export const addNewStock = (stock) => {
-  console.log(stock, 'stock to post')
   return dispatch => {
-    fetch('http://localhost:3000/stocks', {
+    fetch('https://stockmoji-server-db.herokuapp.com/stocks', {
       method: 'POST',
       headers: new Headers({
         'content-type': 'application/json'
@@ -118,12 +118,16 @@ export const addNewStock = (stock) => {
       body: JSON.stringify(stock)
     })
       .then(resp => resp.json())
-      .then(stock => {
-        console.log(stock, 'stock response')
-        dispatch({
-          type: ADD_USER_STOCK_SUCCESS,
-          payload: stock
-        })
+      .then(stock => dispatch({
+        type: ADD_USER_STOCK_SUCCESS,
+        payload: stock
       })
+      )
   }
+}
+
+export const resetStockInfo = () => {
+  return ({
+    type: RESET_STOCK_INFO
+  })
 }

@@ -37,7 +37,7 @@ export const usernameChanged = text => {
 export const loginUser = ({ username, password }) => {
   return dispatch => {
     dispatch({ type: LOGIN_USER })
-    return fetch('http://localhost:3000/auth/login',
+    return fetch('https://stockmoji-server-db.herokuapp.com/auth/login',
       {
         method: 'POST',
         body: JSON.stringify({ username, password }),
@@ -72,7 +72,7 @@ export const loginUserFail = (dispatch, error) => {
 export const registerUser = ({ username, password, email }) => {
   return dispatch => {
     dispatch({ type: REGISTER_USER })
-    return fetch('http://localhost:3000/auth/register',
+    return fetch('https://stockmoji-server-db.herokuapp.com/auth/register',
       {
         method: 'POST',
         body: JSON.stringify({ username, password, email }),
@@ -106,7 +106,7 @@ export const registerUserFail = (dispatch, error) => {
 export const logoutUser = () => {
   return dispatch => {
     dispatch({ type: LOGOUT_USER })
-    return fetch('http://localhost:3000/auth/logout', {
+    return fetch('https://stockmoji-server-db.herokuapp.com/auth/logout', {
       method: 'GET',
       credentials: 'include'
     })
@@ -116,7 +116,7 @@ export const logoutUser = () => {
 
 export const isLoggedIn = () => {
   return dispatch => {
-    return fetch('http://localhost:3000/auth/loginCheck', {
+    return fetch('https://stockmoji-server-db.herokuapp.com/auth/loginCheck', {
       method: 'GET',
       credentials: 'include'
     })
@@ -124,6 +124,6 @@ export const isLoggedIn = () => {
       .then(resp => resp.userId ? dispatch({
         type: IS_LOGGED_IN,
         payload: resp
-      }) : navigate('/login'))
+      }) : navigate('/'))
   }
 }

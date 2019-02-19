@@ -24,7 +24,7 @@ class StocksList extends Component {
 
   render () {
     return (
-      this.props.userStocks.length > 0 ? this.props.userStocks.map(stock => <UserStockCard stock={stock} />) : null
+      this.props.userStocks.length > 0 ? this.createStockCards(this.props.userStocks) : null
     )
   }
 }

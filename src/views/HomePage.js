@@ -19,6 +19,7 @@ class HomePage extends Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <div id='home-page'>
         <TickerInput />
@@ -29,7 +30,7 @@ class HomePage extends Component {
               <SentimentCard />
               <StockInfo />
               <Button variant='outlined' color='primary' onClick={() => this.props.addNewStock({
-                user_id: this.props.userId,
+                user_id: this.props.id,
                 stock_ticker: this.props.stockInfo.company.symbol,
                 sentiment: this.props.sentimentScore,
                 magnitude: this.props.magnitudeScore,

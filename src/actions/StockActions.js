@@ -108,6 +108,7 @@ export const handleTickerChange = (ticker) => {
 }
 
 export const addNewStock = (stock) => {
+  console.log(stock, 'stock to post')
   return dispatch => {
     fetch('http://localhost:3000/stocks', {
       method: 'POST',
@@ -118,6 +119,7 @@ export const addNewStock = (stock) => {
     })
       .then(resp => resp.json())
       .then(stock => {
+        console.log(stock, 'stock response')
         dispatch({
           type: ADD_USER_STOCK_SUCCESS,
           payload: stock

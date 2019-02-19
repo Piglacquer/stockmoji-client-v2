@@ -6,18 +6,32 @@
   width: 80vw;
   background-color: white;
   margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+  border-radius: 5px;
 
   .ticker-symbol {
     font-size: 2em;
   }
 
   .sentiment-wrapper {
+    width: 50%;
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .current-price {
+      font-size: 1.5em;
+    }
 
     .score-wrapper {
       display: flex;
       flex-flow: column nowrap;
+      align-items: center;
+
+      .emoji {
+        font-size: 3em;
+      }
     }
   }
 }

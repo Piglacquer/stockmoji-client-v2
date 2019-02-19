@@ -6,17 +6,29 @@
   width: 80vw;
   background-color: white;
   margin: 10px 0 10px 0;
+  padding: 0 10px 0 10px;
+  border-radius: 5px;
 }
 .user-stock-card .ticker-symbol {
   font-size: 2em;
 }
 .user-stock-card .sentiment-wrapper {
+  width: 50%;
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.user-stock-card .sentiment-wrapper .current-price {
+  font-size: 1.5em;
 }
 .user-stock-card .sentiment-wrapper .score-wrapper {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+}
+.user-stock-card .sentiment-wrapper .score-wrapper .emoji {
+  font-size: 3em;
 }
 
 /*# sourceMappingURL=UserStockCard.css.map */

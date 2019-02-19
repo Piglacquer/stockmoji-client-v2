@@ -75,7 +75,7 @@ const magnitudeRound = (magnitude) => {
 }
 
 const renderSentimentSwitch = (score) => {
-  score = score.toString()
+  typeof score === 'number' ? score = score.toFixed(2).toString() : score = score.toString()
   switch (score) {
     case '-1.00':
       return ''
@@ -97,6 +97,8 @@ const renderSentimentSwitch = (score) => {
       return '😡'
     case '-0.10':
       return '😰'
+    case '0.00':
+      return '😶'
     case '0':
       return '😶'
     case '0.01':

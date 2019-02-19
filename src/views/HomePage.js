@@ -29,7 +29,7 @@ class HomePage extends Component {
               <SentimentCard />
               <StockInfo />
               <Button variant='outlined' color='primary' onClick={() => this.props.addNewStock({
-                user_id: this.props.user.userId,
+                user_id: this.props.userId,
                 stock_ticker: this.props.stockInfo.company.symbol,
                 sentiment: this.props.sentimentScore,
                 magnitude: this.props.magnitudeScore,

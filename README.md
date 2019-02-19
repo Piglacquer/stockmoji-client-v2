@@ -21,7 +21,7 @@ ___
 
 ## Tech Used
 
-  React, Redux, Lottie, D3, Reach Router, Redux Thunk
+  React, Redux, Redux Thunk, Lottie, React-stockcharts, Reach Router, Material-UI, Google Cloud Language API, Twitter API, IEX Trading API
 ___
 
 ## Contact
